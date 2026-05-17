@@ -1,50 +1,74 @@
-# Welcome to your Expo app 👋
+# Calorie Tracker
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A personal mobile app built with React Native (Expo) that uses AI to identify food from photos and track daily calorie and macro intake.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **AI Food Detection** — Take a photo of your meal and Claude AI automatically identifies the food and estimates calories, protein, carbs, and fat
+- **Daily Tracking** — Track your daily calorie and macro intake with a clean progress dashboard
+- **TDEE Calculator** — Set up your profile (age, weight, height, activity level, goal) and get a personalized daily calorie and macro target
+- **6 Goals** — Lose Fast, Lose Weight, Maintain, Gain Muscle, Gain Weight, Gain Fast
+- **AI Recommendations** — Get personalized meal and activity suggestions based on your profile and remaining calories for the day
+- **Meal History** — View your past meals organized by day with daily totals
+- **Edit Results** — Manually adjust AI-detected calories and macros if needed
 
-   ```bash
-   npm install
-   ```
+## Tech Stack
 
-2. Start the app
+- **React Native** with Expo (SDK 54)
+- **Expo Router** for navigation
+- **AsyncStorage** for local data persistence
+- **Claude API** (Haiku) for food photo analysis and recommendations
+- **expo-image-picker** for camera and photo library access
 
-   ```bash
-   npx expo start
-   ```
+## Getting Started
 
-In the output, you'll find options to open the app in a
+### Prerequisites
+- Node.js 18+
+- Expo Go app on your iPhone
+- Anthropic API key
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### Installation
 
 ```bash
-npm run reset-project
+git clone https://github.com/ibnunajib07/calorie-tracker.git
+cd calorie-tracker
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Environment Setup
 
-## Learn more
+Create a `.env` file in the root directory:
 
-To learn more about developing your project with Expo, look at the following resources:
+```
+EXPO_PUBLIC_ANTHROPIC_API_KEY=your_claude_api_key_here
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Run
 
-## Join the community
+```bash
+npx expo start
+```
 
-Join our community of developers creating universal apps.
+Scan the QR code with Expo Go on your iPhone.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Project Structure
+
+```
+calorie-tracker/
+├── app/
+│   ├── _layout.jsx       # Tab navigation
+│   ├── index.jsx         # Home screen (daily progress)
+│   ├── camera.jsx        # Food photo + AI analysis
+│   ├── recommend.jsx     # AI meal & activity recommendations
+│   ├── history.jsx       # Meal history by day
+│   └── profile.jsx       # Body stats & TDEE calculator
+└── store/
+    └── userStore.js      # Local data management + TDEE formulas
+```
+
+## Cost
+
+This app uses Claude API (Haiku model) which is very affordable:
+- Food photo analysis: ~$0.02 per photo
+- AI recommendations: ~$0.003 per request
+- Estimated monthly cost for 2 users: ~$3-5
